@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import MoviesCard from "../components/MoviesCard";
 
+import './MoviesGrid.css'
+
 const moviesURL = import.meta.env.VITE_API;
 const apiKEY = import.meta.env.VITE_API_KEY;
 
@@ -8,8 +10,8 @@ const apiKEY = import.meta.env.VITE_API_KEY;
 const Home = () => {
   const [topMovies, setTopMovies] = useState([])
 
-  const getTopRateMovies = async (URL) => {
-    const res = await fetch(URL)
+ const getTopRateMovies = async (url) => {
+    const res = await fetch(url)
     const data =  await res.json()
 
     setTopMovies(data.results)
@@ -19,7 +21,7 @@ const Home = () => {
     const topRateURL =  `${moviesURL}top_rated?${apiKEY}`
 
     getTopRateMovies(topRateURL)
-  }, [])
+  }, []) 
 
   return(
     <div className="container">
